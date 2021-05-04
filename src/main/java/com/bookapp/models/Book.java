@@ -1,6 +1,5 @@
 package com.bookapp.models;
 
-import java.sql.Blob;
 import java.util.Set;
 import java.util.UUID;
 
@@ -8,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
@@ -34,8 +32,7 @@ public class Book {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Lob
-    private Blob bookFile;
+    private String bookLink;
 
     private int reactionNum;
 
