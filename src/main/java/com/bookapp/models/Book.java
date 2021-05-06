@@ -44,11 +44,17 @@ public class Book {
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
-    @ManyToMany(targetEntity = Author.class, mappedBy = "books")
-    private Set<Author> authors;
+//    @ManyToMany(targetEntity = Author.class, mappedBy = "books")
+//    private Set<Author> authors;
+    @ManyToOne
+	@JoinColumn(name = "author_id")
+	private Author author;
 
-    @ManyToMany(targetEntity = BookCategory.class, mappedBy = "books")
-    private Set<BookCategory> categories;
+//    @ManyToMany(targetEntity = BookCategory.class, mappedBy = "books")
+//    private Set<BookCategory> categories;
+    @ManyToOne
+	@JoinColumn(name = "category_id")
+	private BookCategory category;
 
     @PrePersist
     private void generateId() {

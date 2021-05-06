@@ -1,5 +1,7 @@
 package com.bookapp.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -33,8 +36,10 @@ public class Author {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @ManyToMany(targetEntity = Book.class)
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "author_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
-    private Set<Book> books;
+//    @ManyToMany(targetEntity = Book.class)
+//    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "author_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
+//    private Set<Book> books;
+    @OneToMany(mappedBy = "author")
+	private List<Book> books = new ArrayList<>();
 
 }
