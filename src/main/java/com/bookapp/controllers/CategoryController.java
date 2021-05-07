@@ -12,11 +12,10 @@ public class CategoryController {
 	
 	@Autowired
 	private ICategoryService newService;
-	
 	@GetMapping(value = "/categories")
 	public CategoryOutput showCategory() {
-		CategoryOutput result = new CategoryOutput();
-		result.setListResult(newService.findAll()); // không phân trang
+		CategoryOutput result = new CategoryOutput(); // test pust
+		result.setListResult(newService.findAll());
 		return result;
 	}
 }
