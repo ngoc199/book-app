@@ -16,7 +16,7 @@ public class CategoryController {
 	@GetMapping(value = "/categories")
 	public CategoryOutput showCategory() {
 		CategoryOutput result = new CategoryOutput();
-		result.setListResult(newService.findAll()); // không phân trang
+		result.setListResult(newService.findAll());
 		return result;
 	}
 }
