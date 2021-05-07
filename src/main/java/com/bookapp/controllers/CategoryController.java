@@ -14,7 +14,7 @@ public class CategoryController {
 	private ICategoryService newService;
 	@GetMapping(value = "/categories")
 	public CategoryOutput showCategory() {
-		CategoryOutput result = new CategoryOutput(); // test pust
+		CategoryOutput result = new CategoryOutput();
 		result.setListResult(newService.findAll());
 		return result;
 	}
