@@ -28,7 +28,7 @@ public class ProductService implements IProductService{
 		List<Product> entities = productRepository.findAll();
 		for(Product item: entities) {
 			ProductDTO productDTO = productConverter.toDTO(item);
-			results.add(productDTO);kkk
+			results.add(productDTO);
 		}
 		return results;
 	}

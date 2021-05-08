@@ -2,7 +2,7 @@ package com.bookapp.dto;
 
 import java.math.BigDecimal;
 
-public class ProductDTO {kk
+public class ProductDTO {
     private int id;
     private int period; // Period is calculated by days
     private String description;

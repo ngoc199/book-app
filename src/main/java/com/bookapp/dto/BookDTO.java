@@ -1,6 +1,9 @@
 package com.bookapp.dto;
 
-public class BookDTO {kkk
+import com.bookapp.models.Author;
+import com.bookapp.models.Publisher;
+
+public class BookDTO {
     private String id;
     private String name;
     private String description;
@@ -9,9 +12,10 @@ public class BookDTO {kkk
     private int viewNum;
     private boolean isFree;
     
-    private int publisher_id;
-	private int author_id;
-	private int category_id;
+    private PublisherDTO publisherDTO;
+	private AuthorDTO authorDTO;
+	private BookCategoryDTO categoryDTO;
+	
 	public String getId() {
 		return id;
 	}
@@ -54,23 +58,23 @@ public class BookDTO {kkk
 	public void setFree(boolean isFree) {
 		this.isFree = isFree;
 	}
-	public int getPublisher_id() {
-		return publisher_id;
+	public PublisherDTO getPublisherDTO() {
+		return publisherDTO;
 	}
-	public void setPublisher_id(int publisher_id) {
-		this.publisher_id = publisher_id;
+	public void setPublisherDTO(PublisherDTO publisherDTO) {
+		this.publisherDTO = publisherDTO;
 	}
-	public int getAuthor_id() {
-		return author_id;
+	public AuthorDTO getAuthorDTO() {
+		return authorDTO;
 	}
-	public void setAuthor_id(int author_id) {
-		this.author_id = author_id;
+	public void setAuthorDTO(AuthorDTO authorDTO) {
+		this.authorDTO = authorDTO;
 	}
-	public int getCategory_id() {
-		return category_id;
+	public BookCategoryDTO getCategoryDTO() {
+		return categoryDTO;
 	}
-	public void setCategory_id(int category_id) {
-		this.category_id = category_id;
+	public void setCategoryDTO(BookCategoryDTO categoryDTO) {
+		this.categoryDTO = categoryDTO;
 	}
-
+	
 }

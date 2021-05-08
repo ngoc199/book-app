@@ -7,7 +7,7 @@ import com.bookapp.dto.ProductDTO;
 
 public class ProductOutput {
 	private List<ProductDTO> listResult = new ArrayList<>();
-	dkdkdk
+	
 	public List<ProductDTO> getListResult() {
 		return listResult;
 	}
