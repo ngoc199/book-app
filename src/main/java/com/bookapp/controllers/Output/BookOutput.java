@@ -11,7 +11,7 @@ public class BookOutput {
 	public List<BookDTO> getListResult() {
 		return listResult;
 	}
-
+	
 	public void setListResult(List<BookDTO> listResult) {
 		this.listResult = listResult;
 	}

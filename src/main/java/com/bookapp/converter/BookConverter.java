@@ -8,7 +8,7 @@ import com.bookapp.models.Book;
 @Component
 public class BookConverter {
 	public Book toEntity(BookDTO dto) { 
-		Book entity = new Book();
+		Book entity = new Book();kkk
 		entity.setName(dto.getName());
 		entity.setDescription(dto.getDescription());
 		entity.setBookLink(dto.getBookLink());

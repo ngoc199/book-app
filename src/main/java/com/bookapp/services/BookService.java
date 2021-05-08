@@ -3,10 +3,8 @@ package com.bookapp.services;
 import static com.bookapp.repositories.specifications.BookSpecification.nameContains;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.List;kkk
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,9 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.bookapp.converter.BookConverter;
 import com.bookapp.dto.BookDTO;
 import com.bookapp.models.Book;
-import com.bookapp.models.BookCategory;
 import com.bookapp.repositories.BookRepository;
-import com.bookapp.repositories.CategoryRepository;
 import com.bookapp.services.Interfaces.IBookService;
 
 import lombok.RequiredArgsConstructor;
@@ -29,8 +25,6 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class BookService implements IBookService {
-	@Autowired
-    private final CategoryRepository categoryRepository;
 	@Autowired
     private final BookRepository bookRepository;
     @Autowired

@@ -57,7 +57,7 @@ public class BookController {
     public Book getBookById(@PathVariable("bookId") String bookId) {
         return bookService.getBookById(bookId);
     }
-    
+    dkdk
 	@GetMapping(value = "/categories/{category_id}")
 	public BookOutput showBook(@PathVariable("category_id") int category_id) {
 		BookOutput result = new BookOutput();
