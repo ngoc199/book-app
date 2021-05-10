@@ -1,13 +1,11 @@
 package com.bookapp.models;
 
-import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -54,11 +52,11 @@ public class Book {
 //    private Set<BookCategory> categories;
     @ManyToOne
 	@JoinColumn(name = "category_id")
-	private BookCategory category;
+	public BookCategory category;
 
     @PrePersist
     private void generateId() {
         id = UUID.randomUUID().toString().replace("-", "");
     }
-
+    
 }
