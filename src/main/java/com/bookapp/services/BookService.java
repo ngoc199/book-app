@@ -60,9 +60,8 @@ public class BookService implements IBookService {
      * @return book
      * @throws Exception
      */
-    public Book getBookById(String bookId) {
-        return bookRepository.findById(bookId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Book does not exist"));
+    public Book getBookById(String bookId) throws Exception {
+        return bookRepository.findById(bookId).orElseThrow(() -> new Exception());
     }
 
 	@Override

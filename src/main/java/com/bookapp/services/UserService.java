@@ -1,10 +1,8 @@
 package com.bookapp.services;
 
-import static com.bookapp.constants.Constants.*;
+import javax.transaction.Transactional;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.bookapp.models.Book;
 import com.bookapp.models.User;
 import com.bookapp.repositories.UserRepository;
 
@@ -13,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import lombok.RequiredArgsConstructor;
@@ -51,6 +48,7 @@ public class UserService implements UserDetailsService {
 
     /**
      * Create new user
+     *
      * @param newUser
      * @return newUser
      */
@@ -59,18 +57,22 @@ public class UserService implements UserDetailsService {
     }
 
     /**
-     * Get facebook user's data
+     * Update book in user's favorites. Add the book to user's favorites if user
+     * didn't like it yet. Remove the book in the user favorites if the user has
+     * already liked it.
      *
-     * @param accessToken
-     * @return facebookUserData
+     * @param user
+     * @param book
      */
-    public String getFacebookEmail(String accessToken) {
-        RestTemplate restTemplate = new RestTemplate();
-        Map<String, String> uriVariables = new HashMap<>();
-        uriVariables.put("fields", "id,name,email");
-        uriVariables.put("access_token", accessToken);
-        return restTemplate.getForObject(FACEBOOK_DOMAIN + "/me?fields={fields}&access_token={access_token}",
-                String.class, uriVariables);
+    @Transactional(rollbackOn = Exception.class)
+    public void updateFavoriteBook(User user, Book book) {
+        boolean hasBook = user.getFavoriteBooks().contains(book);
+        if (hasBook) {
+            user.getFavoriteBooks().remove(book);
+        } else {
+            user.getFavoriteBooks().add(book);
+        }
+        userRepository.save(user);
     }
 
 }
