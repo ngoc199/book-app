@@ -23,7 +23,7 @@ Sau khi chỉnh sửa code, tải server lên theo các bước sau:
 | /users/favorites?user_token | GET | Lấy danh sách sách yêu thích của người dùng | Danh sách các thông tin sách được lưu bởi người dùng gồm, tên, số lượt thích, không thích, mô tả ngắn gọn, ảnh bìa |:white_check_mark:  |
 | /books?name={bookName} | GET | Lấy toàn bộ thông tin sách, không bao gồm file sách. Có tìm kiếm theo tên nếu thêm tham số name | Danh sách các thông tin sách gồm, tên, số lượt thích, không thích, mô tả ngắn gọn, ảnh bìa |:white_check_mark:  |
 | /books/{bookId} | GET | Lấy thông tin sách được chọn, bao gồm file sách | Thông tin chi tiết của sách như trên bao gồm cả file sách |:white_check_mark:  |
-| /products | GET | Lấy thông tin toàn bộ gói sản phẩm | Danh sách thông tin chi tiết các gói sản phẩm |:black_square_button:  |
+| /products | GET | Lấy thông tin toàn bộ gói sản phẩm | Danh sách thông tin chi tiết các gói sản phẩm |:white_check_mark:  |
 | /products/{productId} | POST | Đặt mua gói sản phẩm | boolean |:black_square_button:  |
 | /reviews/{bookId} | GET | Lấy danh sách đánh giá của sách | Danh sách đánh giá của sách |:black_square_button:  |
 | /reviews/{bookId}/{userToken} | POST | Thêm đánh giá của người dùng vào sách | boolean |:black_square_button:  |
@@ -32,5 +32,5 @@ Sau khi chỉnh sửa code, tải server lên theo các bước sau:
 | /reactions/{reactionId}/{bookId}/{userToken} | POST | Thêm cảm xúc của người dùng với sách | boolean |:black_square_button:  |
 | /reactions/{reactionId}/{bookId}/{userToken} | PUT | Sửa cảm xúc của người dùng với sách | boolean |:black_square_button:  |
 | /reactions/{reactionId}/{bookId}/{userToken} | DELETE | Xóa cảm xúc của người dùng với sách | boolean |:black_square_button:  |
-| /categories?name={categoryName} | GET | Lấy danh sách danh mục. Có tìm kiếm theo tên nếu thêm tham số name | Danh sách thông tin danh mục |:black_square_button:  |
-| /categories/{categoryId} | GET | Lấy thông tin danh mục | Thông tin chi tiết danh mục |:black_square_button:  |
+| /categories?name={categoryName} | GET | Lấy danh sách danh mục. Có tìm kiếm theo tên nếu thêm tham số name | Danh sách thông tin danh mục |:white_check_mark:  |
+| /categories/{categoryId} | GET | Lấy thông tin danh mục | Thông tin chi tiết danh mục |:white_check_mark:  |
