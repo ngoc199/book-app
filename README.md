@@ -18,8 +18,7 @@ Sau khi chỉnh sửa code, tải server lên theo các bước sau:
 ## Các đường dẫn trong API
 | URL | Phương thức | Mô tả | Trả về (dạng JSON) | Hoàn thành |
 |-|-|-|-|-|
-| /users/add | POST | Thêm người dùng mới | boolean |:black_square_button:  |
-| /users/{oauthAccessToken} | GET | Lấy thông tin người dùng bằng thông qua Oauth. Sử dụng Google Oauth, Facebook Oauth. Hoặc sử dụng chung Google và Facebook qua API của Auth0 | Thông tin người dùng gồm token được sinh ra theo phương thức cấp quyền truy cập OAuth |:black_square_button:  |
+| /users| POST | Cấp quyền truy cập người dùng thông qua Facebook. Cần gửi access_token nhận được từ API Facebook lên API này để xin cấp quyền truy cập. Hệ thống sẽ tự tạo tài khoản nếu người dùng chưa có tài khoản trên hệ thống. | JWT. Cần gắn mã này vào trong phần header ở trong mỗi request yêu cầu quyền truy cập. |:white_check_mark:  |
 | /favorites/{userToken}/{bookId}/add | POST | Thêm sách vào danh sách yêu thích của người dùng | boolean |:black_square_button:  |
 | /favorites/{userToken}/{bookId} | GET | Lấy danh sách sách yêu thích của người dùng | Danh sách các thông tin sách được lưu bởi người dùng gồm, tên, số lượt thích, không thích, mô tả ngắn gọn, ảnh bìa |:black_square_button:  |
 | /books?name={bookName} | GET | Lấy toàn bộ thông tin sách, không bao gồm file sách. Có tìm kiếm theo tên nếu thêm tham số name | Danh sách các thông tin sách gồm, tên, số lượt thích, không thích, mô tả ngắn gọn, ảnh bìa |:white_check_mark:  |
