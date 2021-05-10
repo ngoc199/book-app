@@ -7,5 +7,6 @@ import com.bookapp.dto.BookCategoryDTO;
 public interface ICategoryService {
 	
 	List<BookCategoryDTO> findAll();
-	
+	List<BookCategoryDTO> findByNameContaining(String keyword);
+	BookCategoryDTO findById(int categoryId);
 }

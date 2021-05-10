@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.bookapp.dto.BookCategoryDTO;
 
-public class CategoryOutput {
+public class CategoryFindAllOutput {
 	private List<BookCategoryDTO> listResult = new ArrayList<>();
 
 	public List<BookCategoryDTO> getListResult() {

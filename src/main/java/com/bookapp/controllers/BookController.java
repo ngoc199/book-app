@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.bookapp.controllers.Output.BookOutput;
 import com.bookapp.models.Book;
 import com.bookapp.services.BookService;
-import com.bookapp.services.Interfaces.IBookService;
 import com.bookapp.utils.ClassUtils;
 
 import lombok.RequiredArgsConstructor;
@@ -25,7 +23,6 @@ import lombok.RequiredArgsConstructor;
 @ResponseBody
 public class BookController {
 	@Autowired
-	private IBookService iBookService;
     private final BookService bookService;
 
     /**
@@ -63,11 +60,4 @@ public class BookController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
-    
-	@GetMapping(value = "/categories/{category_id}")
-	public BookOutput showBook(@PathVariable("category_id") int category_id) {
-		BookOutput result = new BookOutput();
-		result.setListResult(iBookService.findByCategoryId(category_id));
-		return result;
-	}
 }

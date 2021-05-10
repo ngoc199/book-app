@@ -1,11 +1,14 @@
 package com.bookapp.models;
 
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -53,6 +56,10 @@ public class Book {
     @ManyToOne
 	@JoinColumn(name = "category_id")
 	public BookCategory category;
+
+    @ManyToMany()
+    @JoinTable(name = "user_book_favorites", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> users;
 
     @PrePersist
     private void generateId() {

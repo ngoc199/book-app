@@ -32,4 +32,23 @@ public class CategoryService implements ICategoryService{
 		}
 		return results;
 	}
+
+	@Override
+	public List<BookCategoryDTO> findByNameContaining(String keyword) {
+		// TODO Auto-generated method stub
+		List<BookCategoryDTO> results = new ArrayList<>();
+		List<BookCategory> entities = categoryRepository.findByNameContaining(keyword);
+		for(BookCategory item: entities) {
+			BookCategoryDTO newDTO = categoryConverter.toDTO(item);
+			results.add(newDTO);
+		}
+		return results;
+	}
+
+	@Override
+	public BookCategoryDTO findById(int categoryId) {
+		// TODO Auto-generated method stub
+		BookCategory entity = categoryRepository.findById(categoryId);
+		return categoryConverter.toDTO(entity);
+	}
 }
