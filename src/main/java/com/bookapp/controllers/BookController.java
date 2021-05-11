@@ -127,11 +127,4 @@ public class BookController {
         // Response ok if success
         return ResponseEntity.ok().build();
     }
-
-	@GetMapping(value = "/categories/{category_id}")
-	public BookOutput showBook(@PathVariable("category_id") int category_id) {
-		BookOutput result = new BookOutput();
-		result.setListResult(iBookService.findByCategoryId(category_id));
-		return result;
-	}
 }

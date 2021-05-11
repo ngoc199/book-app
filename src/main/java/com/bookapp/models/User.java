@@ -12,18 +12,20 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.bookapp.models.values.Role;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.bookapp.models.values.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -63,6 +65,10 @@ public class User implements UserDetails {
 
     @OneToMany(targetEntity = Review.class, mappedBy = "user")
     private Set<Review> reviews;
+    
+    @ManyToOne
+	@JoinColumn(name = "product_id")
+	private Product product;
 
     @PrePersist
     private void generateId() {
