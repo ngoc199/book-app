@@ -127,4 +127,47 @@ public class BookController {
         // Response ok if success
         return ResponseEntity.ok().build();
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Update the book like. If the user has liked the book before, then remove it,
+     * otherwise add new like
+     *
+     * @param bookId
+     * @return status
+     */
+    @PostMapping("/{bookId}/likes")
+    public ResponseEntity<?> updateBookLike(@PathVariable("bookId") String bookId) {
+
+        // Get user's details
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
+
+        // Check if the book exists
+        Book book;
+        try {
+            book = bookService.getBookById(bookId);
+        } catch (Exception e) {
+            // Response bad request if can't find book
+            return ResponseEntity.badRequest().build();
+        }
+
+        // Update the likes of the book
+        if (book.getLikedUsers().contains(user)) {
+            book.getLikedUsers().remove(user);
+        } else {
+            book.getLikedUsers().add(user);
+        }
+        bookService.saveBook(book);
+
+        return ResponseEntity.ok().build();
+    }
+
+	@GetMapping(value = "/categories/{category_id}")
+	public BookOutput showBook(@PathVariable("category_id") int category_id) {
+		BookOutput result = new BookOutput();
+		result.setListResult(iBookService.findByCategoryId(category_id));
+		return result;
+	}
+>>>>>>> branch 'master' of https://github.com/ngoc199/book-app.git
 }
