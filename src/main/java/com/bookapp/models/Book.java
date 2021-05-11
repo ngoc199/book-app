@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
@@ -45,25 +46,41 @@ public class Book {
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
-//    @ManyToMany(targetEntity = Author.class, mappedBy = "books")
-//    private Set<Author> authors;
+    // @ManyToMany(targetEntity = Author.class, mappedBy = "books")
+    // private Set<Author> authors;
     @ManyToOne
-	@JoinColumn(name = "author_id")
-	private Author author;
+    @JoinColumn(name = "author_id")
+    private Author author;
 
-//    @ManyToMany(targetEntity = BookCategory.class, mappedBy = "books")
-//    private Set<BookCategory> categories;
+    // @ManyToMany(targetEntity = BookCategory.class, mappedBy = "books")
+    // private Set<BookCategory> categories;
     @ManyToOne
-	@JoinColumn(name = "category_id")
-	public BookCategory category;
+    @JoinColumn(name = "category_id")
+    public BookCategory category;
 
     @ManyToMany()
     @JoinTable(name = "user_book_favorites", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
 
+    @OneToMany(targetEntity = Review.class, mappedBy = "book")
+    private Set<Review> reviews;
+
     @PrePersist
     private void generateId() {
         id = UUID.randomUUID().toString().replace("-", "");
     }
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        final Book book = (Book) obj;
+        return book.getId().equals(this.getId());
+    }
 }

@@ -25,10 +25,10 @@ Sau khi chỉnh sửa code, tải server lên theo các bước sau:
 | /books/{bookId} | GET | Lấy thông tin sách được chọn, bao gồm file sách | Thông tin chi tiết của sách như trên bao gồm cả file sách |:white_check_mark:  |
 | /products | GET | Lấy thông tin toàn bộ gói sản phẩm | Danh sách thông tin chi tiết các gói sản phẩm |:white_check_mark:  |
 | /products/{productId} | POST | Đặt mua gói sản phẩm | boolean |:black_square_button:  |
-| /reviews/{bookId} | GET | Lấy danh sách đánh giá của sách | Danh sách đánh giá của sách |:black_square_button:  |
-| /reviews/{bookId}/{userToken} | POST | Thêm đánh giá của người dùng vào sách | boolean |:black_square_button:  |
-| /reviews/{bookId}/{userToken} | PUT | Sửa đánh giá của người dùng vào sách | boolean |:black_square_button:  |
-| /reviews/{bookId}/{userToken} | DELETE | Xóa đánh giá của người dùng trong sách | boolean |:black_square_button:  |
+| /books/{bookId}/reviews | GET | Lấy danh sách đánh giá của sách | Danh sách đánh giá của sách |:white_check_mark:  |
+| /books/{bookId}/reviews?user_token | POST | Thêm đánh giá của người dùng vào sách | Http Status |:white_check_mark:  |
+| /reviews/{reviewId}?user_token | PUT | Sửa đánh giá của người dùng vào sách | Http Status |:white_check_mark:  |
+| /reviews/{reviewId}?user_token | DELETE | Xóa đánh giá của người dùng trong sách | Http Status |:white_check_mark:  |
 | /reactions/{reactionId}/{bookId}/{userToken} | POST | Thêm cảm xúc của người dùng với sách | boolean |:black_square_button:  |
 | /reactions/{reactionId}/{bookId}/{userToken} | PUT | Sửa cảm xúc của người dùng với sách | boolean |:black_square_button:  |
 | /reactions/{reactionId}/{bookId}/{userToken} | DELETE | Xóa cảm xúc của người dùng với sách | boolean |:black_square_button:  |
