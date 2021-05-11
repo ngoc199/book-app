@@ -1,8 +1,12 @@
 package com.bookapp.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BookCategoryDTO {
 	private int id;
 	private String name;
+	private List<BookDTO> listBookDTO = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -19,5 +23,13 @@ public class BookCategoryDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+//	public List<BookDTO> getListBookDTO() {
+//		return listBookDTO;
+//	}
+//
+//	public void setListBookDTO(List<BookDTO> listBookDTO) {
+//		this.listBookDTO = listBookDTO;
+//	}
 	
 }

@@ -35,8 +35,9 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/books")
 @ResponseBody
 public class BookController {
-	@Autowired
-	private IBookService iBookService;
+
+    @Autowired
+    private final IBookService iBookService;
     private final BookService bookService;
     private final ReviewService reviewService;
 
@@ -78,7 +79,7 @@ public class BookController {
 
     /**
      * Get reviews of the book
-     * 
+     *
      * @param bookId
      * @return bookReviews
      */
@@ -95,7 +96,7 @@ public class BookController {
 
     /**
      * Add new review to the book
-     * 
+     *
      * @param bookId
      * @return status
      */

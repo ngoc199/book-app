@@ -1,8 +1,5 @@
 package com.bookapp.dto;
 
-import com.bookapp.models.Author;
-import com.bookapp.models.Publisher;
-
 public class BookDTO {
     private String id;
     private String name;

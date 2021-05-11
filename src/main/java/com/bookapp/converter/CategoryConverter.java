@@ -7,6 +7,7 @@ import com.bookapp.models.BookCategory;
 
 @Component
 public class CategoryConverter {
+	
 	public BookCategory toEntity(BookCategoryDTO dto) { 
 		BookCategory entity = new BookCategory();
 		entity.setName(dto.getName());

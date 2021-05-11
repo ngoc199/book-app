@@ -46,19 +46,19 @@ public class Book {
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
-//    @ManyToMany(targetEntity = Author.class, mappedBy = "books")
-//    private Set<Author> authors;
+    // @ManyToMany(targetEntity = Author.class, mappedBy = "books")
+    // private Set<Author> authors;
     @ManyToOne
-	@JoinColumn(name = "author_id")
-	private Author author;
+    @JoinColumn(name = "author_id")
+    private Author author;
 
-//    @ManyToMany(targetEntity = BookCategory.class, mappedBy = "books")
-//    private Set<BookCategory> categories;
+    // @ManyToMany(targetEntity = BookCategory.class, mappedBy = "books")
+    // private Set<BookCategory> categories;
     @ManyToOne
-	@JoinColumn(name = "category_id")
-	private BookCategory category;
+    @JoinColumn(name = "category_id")
+    public BookCategory category;
 
-    @ManyToMany(targetEntity = User.class, mappedBy = "favoriteBooks")
+    @ManyToMany()
     @JoinTable(name = "user_book_favorites", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
 
