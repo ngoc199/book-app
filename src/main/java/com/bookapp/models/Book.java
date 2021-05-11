@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
@@ -61,9 +62,25 @@ public class Book {
     @JoinTable(name = "user_book_favorites", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
 
+    @OneToMany(targetEntity = Review.class, mappedBy = "book")
+    private Set<Review> reviews;
+
     @PrePersist
     private void generateId() {
         id = UUID.randomUUID().toString().replace("-", "");
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        final Book book = (Book) obj;
+        return book.getId().equals(this.getId());
+    }
 }

@@ -13,6 +13,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -60,6 +61,9 @@ public class User implements UserDetails {
     @ManyToMany(targetEntity = Book.class, mappedBy = "users")
     private Set<Book> favoriteBooks;
 
+    @OneToMany(targetEntity = Review.class, mappedBy = "user")
+    private Set<Review> reviews;
+
     @PrePersist
     private void generateId() {
         id = UUID.randomUUID().toString().replace("-", "");
@@ -101,5 +105,19 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        final User user = (User) obj;
+        return user.getId().equals(this.getId());
     }
 }

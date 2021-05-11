@@ -8,6 +8,10 @@ public final class Constants {
     // Parameters' name
     public static final String USER_TOKEN_PARAM = "user_token";
 
+    // Error Messages
+    public static final String REVIEW_NOT_EXIST = "The review does not exist";
+    public static final String REVIEW_NOT_BELONG_TO_USER = "The review does not belong to the user";
+
     // Social API domain
     public static final String FACEBOOK_DOMAIN = "https://graph.facebook.com";
     public static final String GOOGLE_DOMAIN = "https://www.googleapis.com";
