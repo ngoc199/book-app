@@ -58,11 +58,11 @@ public class Book {
     @JoinColumn(name = "category_id")
     public BookCategory category;
 
-    @ManyToMany(targetEntity = User.class, mappedBy = "favoriteBooks")
+    @ManyToMany
     @JoinTable(name = "user_book_favorites", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
 
-    @ManyToMany(targetEntity = User.class, mappedBy = "likedBooks")
+    @ManyToMany
     @JoinTable(name = "user_book_likes", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> likedUsers;
 
