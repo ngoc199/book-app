@@ -61,6 +61,9 @@ public class User implements UserDetails {
     @ManyToMany(targetEntity = Book.class, mappedBy = "users")
     private Set<Book> favoriteBooks;
 
+    @ManyToMany(targetEntity = Book.class, mappedBy = "likedUsers")
+    private Set<Book> likedBooks;
+
     @OneToMany(targetEntity = Review.class, mappedBy = "user")
     private Set<Review> reviews;
 

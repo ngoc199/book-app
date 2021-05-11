@@ -29,8 +29,6 @@ Sau khi chỉnh sửa code, tải server lên theo các bước sau:
 | /books/{bookId}/reviews?user_token | POST | Thêm đánh giá của người dùng vào sách | Http Status |:white_check_mark:  |
 | /reviews/{reviewId}?user_token | PUT | Sửa đánh giá của người dùng vào sách | Http Status |:white_check_mark:  |
 | /reviews/{reviewId}?user_token | DELETE | Xóa đánh giá của người dùng trong sách | Http Status |:white_check_mark:  |
-| /reactions/{reactionId}/{bookId}/{userToken} | POST | Thêm cảm xúc của người dùng với sách | boolean |:black_square_button:  |
-| /reactions/{reactionId}/{bookId}/{userToken} | PUT | Sửa cảm xúc của người dùng với sách | boolean |:black_square_button:  |
-| /reactions/{reactionId}/{bookId}/{userToken} | DELETE | Xóa cảm xúc của người dùng với sách | boolean |:black_square_button:  |
+| /books/{bookId}/likes?user_token | POST | Cập nhật lượt thích của người dùng với sách. Nếu người dùng đã thích thì bỏ thích, ngược lại thêm lượt thích cho sách | boolean |:white_check_mark:  |
 | /categories?name={categoryName} | GET | Lấy danh sách danh mục. Có tìm kiếm theo tên nếu thêm tham số name | Danh sách thông tin danh mục |:white_check_mark:  |
 | /categories/{categoryId} | GET | Lấy thông tin danh mục | Thông tin chi tiết danh mục |:white_check_mark:  |
