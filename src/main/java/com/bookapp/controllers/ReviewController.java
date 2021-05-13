@@ -7,9 +7,9 @@ import com.bookapp.dto.reviews.AddBookReviewRequest;
 import com.bookapp.models.Review;
 import com.bookapp.models.User;
 import com.bookapp.services.ReviewService;
+import com.bookapp.utils.AuthUtils;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -46,7 +46,7 @@ public class ReviewController {
         }
 
         // Get user's details from security context
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        User user = AuthUtils.getAuthenticatedUser();
 
         // Response bad request if the review does not belong to the user
         if (review.getUser().equals(user)) {
@@ -64,7 +64,7 @@ public class ReviewController {
 
     /**
      * Delete review by id
-     * 
+     *
      * @param reviewId
      * @return status
      */
@@ -80,7 +80,7 @@ public class ReviewController {
         }
 
         // Get user's details from security context
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        User user = AuthUtils.getAuthenticatedUser();
 
         // Response bad request if the review does not belong to the user
         if (review.getUser().equals(user)) {

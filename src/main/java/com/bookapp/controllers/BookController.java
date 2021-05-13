@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +25,7 @@ import com.bookapp.models.User;
 import com.bookapp.services.BookService;
 import com.bookapp.services.ReviewService;
 import com.bookapp.services.Interfaces.IBookService;
+import com.bookapp.utils.AuthUtils;
 import com.bookapp.utils.ClassUtils;
 
 import lombok.RequiredArgsConstructor;
@@ -105,7 +105,7 @@ public class BookController {
             @RequestBody @Valid AddBookReviewRequest request) {
 
         // Get user's details
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        User user = AuthUtils.getAuthenticatedUser();
 
         // Check if the book exists
         Book book;
@@ -139,7 +139,7 @@ public class BookController {
     public ResponseEntity<?> updateBookLike(@PathVariable("bookId") String bookId) {
 
         // Get user's details
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        User user = AuthUtils.getAuthenticatedUser();
 
         // Check if the book exists
         Book book;

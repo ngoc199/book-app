@@ -11,9 +11,9 @@ import com.bookapp.models.User;
 import com.bookapp.security.jwt.JwtTokenProvider;
 import com.bookapp.services.BookService;
 import com.bookapp.services.UserService;
+import com.bookapp.utils.AuthUtils;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -77,7 +77,7 @@ public class UserController {
     @PostMapping("/favorites")
     public ResponseEntity<?> updateFavorite(@RequestBody UpdateFavoriteRequest request) {
         // Get user details from the request
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        User user = AuthUtils.getAuthenticatedUser();
 
         // Check if the book exists
         Book book;
@@ -105,7 +105,7 @@ public class UserController {
     public ResponseEntity<?> getFavorites() {
 
         // Get user details from the request
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        User user = AuthUtils.getAuthenticatedUser();
 
         // Return favorite books
         return ResponseEntity.ok(new GetFavoritesResponse(user.getFavoriteBooks()));

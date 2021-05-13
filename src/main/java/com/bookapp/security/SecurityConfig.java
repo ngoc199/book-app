@@ -43,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Disable cors and csrf because this is the API. It will handle requests from
         // different sources
         http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, "/users").permitAll()
-                .antMatchers(HttpMethod.GET, "/books/**", "/categories/**").permitAll().anyRequest().authenticated()
+                .antMatchers(HttpMethod.GET, "/books/**", "/categories/**", "/products/**").permitAll().anyRequest()
+                .authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
