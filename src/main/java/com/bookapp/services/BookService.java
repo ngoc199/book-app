@@ -29,6 +29,16 @@ public class BookService implements IBookService {
 	private BookConverter bookConverter;
 
     /**
+     * Save book
+     *
+     * @param book
+     * @return book
+     */
+    public Book saveBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    /**
      * Get all books sort by <code>property</code>
      *
      * @param page
