@@ -166,5 +166,5 @@ public class BookController {
 		BookOutput result = new BookOutput();
 		result.setListResult(iBookService.findByCategoryId(category_id));
 		return result;
-	}
+    }
 }
