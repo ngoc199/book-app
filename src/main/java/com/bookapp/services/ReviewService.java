@@ -1,8 +1,12 @@
 package com.bookapp.services;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
+import com.bookapp.models.Book;
 import com.bookapp.models.Review;
+import com.bookapp.models.User;
 import com.bookapp.repositories.ReviewRepository;
 
 import org.springframework.stereotype.Service;
@@ -13,6 +17,22 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ReviewService {
     private final ReviewRepository reviewRepository;
+
+    /**
+     * Get review by user and book
+     *
+     * @param user
+     * @param book
+     * @return
+     * @throws Exception
+     */
+    public Review findReviewByUserAndBook(User user, Book book) {
+        Optional<Review> review = reviewRepository.findByUserAndBook(user, book);
+        if (review.isPresent()) {
+            return review.get();
+        }
+        return null;
+    }
 
     /**
      * Save review

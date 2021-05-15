@@ -117,7 +117,11 @@ public class BookController {
         }
 
         // Add new review to the book
-        Review review = new Review();
+        Review review = reviewService.findReviewByUserAndBook(user, book);
+        if (review != null) {
+            return ResponseEntity.badRequest().body("Review has already existed");
+        }
+        review = new Review();
         review.setUser(user);
         review.setBook(book);
         review.setRate(request.getRate());
